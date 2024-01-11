@@ -1,14 +1,22 @@
 #CLASSES
 
 class Aluno:
-    def __init__(self):
-        self.nome = input("Insira o nome do aluno: ")
+    def __init__(self,nome,nota_1,nota_2):
+        self.nome = nome
         self.status = ["Aprovado", "Em recuperação", "Reprovado"]
-        self.nota_1 = float(input("Insira a nota da prova 1: "))
-        self.nota_2 = float(input("Insira a nota da prova 2: "))
+        self.nota_1 = nota_1
+        self.nota_2 = nota_2
 
-    #def __str__(self):
-        #return f"Aluno: {self.nome}" // PESQUISAR DEPOIS
+
+    def calcular_media(self):
+        return ((self.nota_1 + self.nota_2) / 2)
+    
+    def definir_status(self,media):
+        if media >= 5:
+            self.status = self.status[0]
+        
+        else:
+            self.status = self.status[1]
 
 #FUNÇÕES
 

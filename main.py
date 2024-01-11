@@ -3,7 +3,6 @@ import classes_funcoes as cf
 
 
 ##FAZER O TRATAMENTO DE ERRO DE TODOS INPUTS
-##DE
 
 alunos = {}
 
@@ -14,8 +13,41 @@ def main():
 
        
         if opcao_geral  == "1":
-            aluno = cf.Aluno()
+            nome = input("Informe o nome do aluno a ser cadastrado: ")
+            
+            
+            while True:
+                try:
+                    nota_1 = float(input("Informe a nota do aluno na prova 1: "))
+                except ValueError:
+                    print("Insira um número válido de 0 a 10: ")
+                    continue
+
+                if nota_1 >= 0 and nota_1 <= 10:
+                    break
+
+                else:
+                    print("Insira uma nota válida entre 0 e 10 pontos: ")
+
+
+            while True:
+                try:
+                    nota_2 = float(input("Informe a nota do aluno na prova 2: "))
+                except ValueError:
+                    print("Insira um número válido de 0 a 10: ")
+                    continue
+
+                if nota_2 >= 0 and nota_2 <= 10:
+                    break
+
+                else:
+                    print("Insira uma nota válida entre 0 e 10 pontos: ")
+                
+            aluno = cf.Aluno(nome, nota_1, nota_2)
+            media = aluno.calcular_media()
+            aluno.definir_status(media)
             alunos[f"{len(alunos) +1 }"] = aluno #CRIANDO CHAVE ID : aluno  ##### OPÇÃO OK
+            
 
 
         elif opcao_geral == "2":
