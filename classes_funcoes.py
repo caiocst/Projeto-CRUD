@@ -1,6 +1,7 @@
 #CLASSES
 
-class Aluno:
+
+class Aluno():
     def __init__(self,nome,nota_1,nota_2):
         self.nome = nome
         self.status = ["Aprovado", "Em recuperação", "Reprovado"]
@@ -18,6 +19,21 @@ class Aluno:
         else:
             self.status = self.status[1]
 
+class Storage():
+    def __init__(self):
+        self.data = {}
+    
+    def store(self,key,value):
+        self.data[key] = value
+
+    def get(self, key):
+        return self.data[key]
+
+    def remove(self,id):
+        print(f"O aluno {self.data[id].nome} foi excluído do sistema. ")
+        self.data.pop(id)
+        
+
 #FUNÇÕES
 
 def exibir_menu_geral():
@@ -27,7 +43,8 @@ Selecione uma das opções abaixo para prosseguir:\n
 1 - Inserir um usuário no sistema.
 2 - Alterar dados de um usuário no sistema.
 3 - Excluir um usuário do sistema.
-4 - Sair
+4 - Verificar o ID de um usuário no sistema
+5 - Encerrar o sistema
 """)
 
 def exibir_menu_opcao2():
@@ -39,14 +56,18 @@ Informe o dado que deseja atualizar:
 4 - Voltar ao menu inicial 
 """)
 
-def encontrar_aluno(alunos, aluno_procurado):
-    for chave, valor in alunos.items():
+def encontrar_aluno(storage, aluno_procurado):
+    for chave, valor in storage.data.items():
         if valor.nome == aluno_procurado:
             print(f"O aluno: {valor.nome} é associado ao ID: {chave}")
-            return chave
+            return valor
 
     print("\nO aluno não consta no banco de dados. \n")
     return None
 
-
-
+#def encontrar_aluno(nome_aluno, storage):
+    #for chave, valor in storage.data.items():
+        #if chave == nome_aluno:
+            #print (f"O aluno: {}")
+            #return chave
+    

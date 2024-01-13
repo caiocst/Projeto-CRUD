@@ -4,7 +4,7 @@ import classes_funcoes as cf
 
 ##FAZER O TRATAMENTO DE ERRO DE TODOS INPUTS
 
-alunos = {}
+storage = cf.Storage()
 
 def main():
     while True:
@@ -46,45 +46,62 @@ def main():
             aluno = cf.Aluno(nome, nota_1, nota_2)
             media = aluno.calcular_media()
             aluno.definir_status(media)
-            alunos[f"{len(alunos) +1 }"] = aluno #CRIANDO CHAVE ID : aluno  ##### OPÇÃO OK
-            
-
+            storage.store(len(storage.data) + 1, aluno) #CRIANDO CHAVE ID : aluno  ##### OPÇÃO OK
 
         elif opcao_geral == "2":
-            nome_att = input("Informe o nome do aluno que terá os dados atualizados: ")
-            att = cf.encontrar_aluno(alunos,nome_att)
+            while True:
+                try:
+                    id_aluno = int(input("Informe o ID do aluno que terá os dados atualizados: "))
+                    att = storage.get(id_aluno)
+                    print(att)
+                except ValueError:
+                    print("ID inválido. Insira um número inteiro para o ID.")
+                    continue
 
-            if att != None:
-                while True:
-                    cf.exibir_menu_opcao2()
-                    opcao_2 = input("Informe a opção desejada: ")
+                if att != None:
+                    while True:
+                        cf.exibir_menu_opcao2()
+                        opcao_2 = input("Informe a opção desejada: ")
 
-                    
-                    if opcao_2 == "1":
-                        alunos[att].nome = input("Insira o novo nome: ")
-                        print("Nome atualizado.")
+                        
+                        if opcao_2 == "1":
+                            att.nome = input("Insira o novo nome: ")
+                            print("Nome atualizado.")
 
-                    elif opcao_2 == "2":
-                        alunos[att].nota_1 = float(input("Insira a nota atualizada da prova 1: "))   
-                        print("Nota da prova 1 atualizada.")
+                        elif opcao_2 == "2":
+                            att.nota_1 = float(input("Insira a nota atualizada da prova 1: "))   
+                            print("Nota da prova 1 atualizada.")
 
-                    elif opcao_2 == "3":
-                        alunos[att].nota_2 = float(input("Insira a nota atualizada da prova 2: "))
-                        print("Nota da prova 2 atualizada.")
-                    
-                    elif opcao_2 == "4":
-                        break
-                    
-                    else:
-                        print("Opção inválida. Tente novamente!")
+                        elif opcao_2 == "3":
+                            att.nota_2 = float(input("Insira a nota atualizada da prova 2: "))
+                            print("Nota da prova 2 atualizada.")
+                        
+                        elif opcao_2 == "4":
+                            break
+                        
+                        else:
+                            print("Opção inválida. Tente novamente!")
+                        
+                break
 
         elif opcao_geral == "3":
-                nome_att = input("Informe o nome do aluno que terá os dados excluídos do sistema: ")
-                att = cf.encontrar_aluno(alunos,nome_att)
-                alunos.pop(att)
-                print(f"O cadastro do aluno {nome_att} foi exclúido do sistema.")
+            while True:
+                try:
+                    id_aluno = int(input("Informe o ID do aluno que será excluído do sistema: "))
+                except ValueError:
+                    print("ID inválido. Insira um número inteiro para o ID.")
+                    continue
+
+                storage.remove(id_aluno)
+                break
         
         elif opcao_geral == "4":
+            nome_aluno = input("Informe o nome do aluno que deseja buscar: ")
+            cf.encontrar_aluno(storage,nome_aluno)
+                
+
+        
+        elif opcao_geral == "5":
             print("Você encerrou o sistema!")
             sys.exit()
     
