@@ -65,9 +65,4 @@ def encontrar_aluno(storage, aluno_procurado):
     print("\nO aluno não consta no banco de dados. \n")
     return None
 
-#def encontrar_aluno(nome_aluno, storage):
-    #for chave, valor in storage.data.items():
-        #if chave == nome_aluno:
-            #print (f"O aluno: {}")
-            #return chave
-    
+
