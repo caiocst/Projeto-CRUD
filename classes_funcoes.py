@@ -1,6 +1,4 @@
 #CLASSES
-
-
 class Aluno():
     def __init__(self,nome,nota_1,nota_2):
         self.nome = nome
@@ -18,6 +16,7 @@ class Aluno():
         
         else:
             self.status = self.status[1]
+
 
 class Storage():
     def __init__(self):
@@ -47,7 +46,8 @@ Selecione uma das opções abaixo para prosseguir:\n
 5 - Encerrar o sistema
 """)
 
-def exibir_menu_opcao2():
+
+def exibir_menu_att():
     print("""
 Informe o dado que deseja atualizar: 
 1 - Nome
@@ -56,18 +56,21 @@ Informe o dado que deseja atualizar:
 4 - Retornar ao menu anterior
 """)
     
+
 def exibir_menu_pos():
     print(f"""
 Selecione a opção desejada para prosseguir: 
 1 - Retornar ao menu principal
 2 - Encerrar o sistema""")
 
-def exibir_menu_att():
+
+def exibir_menu_opcao2():
     print("""
 Selecione a opção desejada para prosseguir: 
 1 - Verificar a ID de um aluno
 2 - Prosseguir para a atualização de dados
 3 - Retornar ao menu inicial""")
+
 
 def encontrar_aluno(storage, aluno_procurado):
     for chave, valor in storage.data.items():
@@ -77,5 +80,9 @@ def encontrar_aluno(storage, aluno_procurado):
 
     print("\nO aluno não consta no banco de dados. \n")
     return None
+
+
+
+    
 
 

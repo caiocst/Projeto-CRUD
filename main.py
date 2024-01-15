@@ -7,12 +7,10 @@ def main():
     while True:
         cf.exibir_menu_geral()
         opcao_geral = input("Informe a sua opção: ")
-
-       
+      
         if opcao_geral  == "1":
             nome = input("Informe o nome do aluno a ser cadastrado: ")
-            
-            
+                    
             while True:
                 try:
                     nota_1 = float(input("Informe a nota do aluno na prova 1: "))
@@ -60,7 +58,7 @@ def main():
     
         elif opcao_geral == "2":
             while True:
-                cf.exibir_menu_att()
+                cf.exibir_menu_opcao2()
                 opcao_att = input("Informe a opção desejada: ")
                 if opcao_att == "1":
                     nome_aluno = input("Informe o nome do aluno para saber o ID associado a ele: ")
@@ -75,47 +73,49 @@ def main():
                             print("ID inválido. Insira um número inteiro para o ID.")
                             continue
 
-                        if att != None:
-                            while True:
-                                cf.exibir_menu_opcao2()
-                                opcao_2 = input("Informe a opção desejada: ")
+                        if att == None:
+                            break
+                        while True:
+                            cf.exibir_menu_att()
+                            opcao_2 = input("Informe a opção desejada: ")
 
-                                
-                                if opcao_2 == "1":
-                                    att.nome = input("Insira o novo nome: ")
-                                    print("Nome atualizado.")
+                            
+                            if opcao_2 == "1":
+                                att.nome = input("Insira o novo nome: ")
+                                print("Nome atualizado.")
 
-                                elif opcao_2 == "2":
-                                    while True:
-                                        try:
-                                            att.nota_1 = float(input("Insira a nota atualizada da prova 1: "))   
-                                            print("Nota da prova 1 atualizada.")
-                                        except ValueError:
-                                            print("Insira um número válido de 0 a 10: ")
-                                            continue
-                                        
-                                        if att.nota_1 >= 0 and att.nota_1 <= 10:
-                                            break
+                            elif opcao_2 == "2":
+                                while True:
+                                    try:
+                                        att.nota_1 = float(input("Insira a nota atualizada da prova 1: "))   
+                                        print("Nota da prova 1 atualizada.")
+                                    except ValueError:
+                                        print("Insira um número válido de 0 a 10: ")
+                                        continue
+                                    
+                                    if att.nota_1 >= 0 and att.nota_1 <= 10:
+                                        break
 
-                                elif opcao_2 == "3":
-                                    while True:
-                                        try:
-                                            att.nota_2 = float(input("Insira a nota atualizada da prova 2: "))
-                                            print("Nota da prova 2 atualizada.")
-                                        except ValueError:
-                                            print("Insira um número válido de 0 a 10: ")
-                                            continue
+                            elif opcao_2 == "3":
+                                while True:
+                                    try:
+                                        att.nota_2 = float(input("Insira a nota atualizada da prova 2: "))
+                                        print("Nota da prova 2 atualizada.")
+                                    except ValueError:
+                                        print("Insira um número válido de 0 a 10: ")
+                                        continue
 
-                                        if att.nota_2 >= 0 and att.nota_2 <= 10:
-                                            break
+                                    if att.nota_2 >= 0 and att.nota_2 <= 10:
+                                        break
 
-                                elif opcao_2 == "4":
-                                    break
+                            elif opcao_2 == "4":
+                                break
 
-                                else:
-                                    print("Opção inválida. Tente novamente!")
+                            else:
+                                print("Opção inválida. Tente novamente!")
+                            
                         break       
-                                
+                   
                 elif opcao_att == "3":
                     break
 
@@ -133,13 +133,11 @@ def main():
         elif opcao_geral == "4":
             nome_aluno = input("Informe o nome do aluno que deseja buscar: ")
             cf.encontrar_aluno(storage,nome_aluno)
-                
-
-        
+  
         elif opcao_geral == "5":
             print("Você encerrou o sistema!")
             sys.exit()
-    
+
         else:
             print("Opção inválida. Tente novamente!")
 
