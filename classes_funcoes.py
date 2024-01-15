@@ -53,8 +53,21 @@ Informe o dado que deseja atualizar:
 1 - Nome
 2 - Nota da prova 1 
 3 - Nota da prova 2 
-4 - Voltar ao menu inicial 
+4 - Retornar ao menu anterior
 """)
+    
+def exibir_menu_pos():
+    print(f"""
+Selecione a opção desejada para prosseguir: 
+1 - Retornar ao menu principal
+2 - Encerrar o sistema""")
+
+def exibir_menu_att():
+    print("""
+Selecione a opção desejada para prosseguir: 
+1 - Verificar a ID de um aluno
+2 - Prosseguir para a atualização de dados
+3 - Retornar ao menu inicial""")
 
 def encontrar_aluno(storage, aluno_procurado):
     for chave, valor in storage.data.items():
