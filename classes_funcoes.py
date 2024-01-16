@@ -82,7 +82,14 @@ def encontrar_aluno(storage, aluno_procurado):
     return None
 
 
-
-    
-
-
+def validar_nota(nota):
+    try:
+        nota = float(nota)
+        if nota >= 0 and nota <= 10:
+            return nota
+        else:
+            print("Insira uma nota válida entre 0 e 10 pontos: ")
+            return None
+    except ValueError:
+        print ("Insira um número valido de 0 a 10: ")
+        return None
