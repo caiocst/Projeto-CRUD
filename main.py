@@ -21,7 +21,7 @@ def main():
             aluno = cf.Aluno(nome, nota_1, nota_2)
             media = aluno.calcular_media()
             aluno.definir_status(media)
-            storage.store(len(storage.data) + 1, aluno) #CRIANDO CHAVE ID : aluno  ##### OPÇÃO OK
+            storage.store(len(storage.data) + 1, aluno)    #CRIANDO CHAVE ID : aluno
             print(f"O aluno {aluno.nome} foi cadastrado para o ID {len(storage.data)}.")
     
             cf.exibir_menu_pos()

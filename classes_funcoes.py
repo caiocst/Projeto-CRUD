@@ -6,6 +6,8 @@ class Aluno():
         self.nota_1 = nota_1
         self.nota_2 = nota_2
 
+    def __str__(self):
+        return self.nome
 
     def calcular_media(self):
         return ((self.nota_1 + self.nota_2) / 2)
